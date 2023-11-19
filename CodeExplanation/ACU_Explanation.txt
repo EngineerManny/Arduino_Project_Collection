@@ -1,0 +1,107 @@
+'#!/usr/bin/env python3'
+This is a shebang line that tells the system to execute this script with python3.
+
+'import os'
+Imports the 'os' module which provides functions for interacting with the operating system.
+
+'import subprocess'
+Imports the 'subprocess' module, used to run new applications or programs through python.
+
+'def run_command(command)'
+Defines a function named 'run_command' that takes a single argument, 'command'.
+
+'try'
+Begins a try block where you attempt to run code that might cause an error.
+
+'subprocess.run(f'sudo {command}', shell=True, check=True)'
+Runs a shell command with supervisor privileges ('sudo'). 'shell=True' allows shell commands to be passed as strings. 'check=True' raises an error if the command returns a non-zero exit status.
+
+'except subprocess.CalledProcessError as e:'
+Catches any 'CalledProcessError' thrown by the 'subprocess.run' command.
+
+'print(f"Error occurred: {e}")'
+Prints an error message if an exception occurs.
+
+'exit(1)'
+Exits the script with status of 1, indicating an error.
+
+'def find_c_file(directory, file_name):'
+Defines a function to search for a .c file in a specified directory and its subdirectories.
+
+'for root, _, files in os.walk(directory):'
+Iterates over the directory tree with 'root' as the current directory path, '_' for directories in the path (ignored), and 'files' as a list of files in 'root'.
+
+'for file in files:'
+Iterates over each file in the current directory.
+
+'if file == file_name:'
+Checks if the current file's name matches the specified 'file_name'.
+
+'return os.path.join(root, file)'
+Returns the full path to the found file.
+
+'return None'
+Returns 'None' if the file is not found in any of the directories.
+
+'def main():'
+Defines the main function, which is the entry point of the script.
+
+'c_file_name = input("Enter the Arduino project .c file name: ")'
+Prompts the user to enter the name of the arduino project .c file.
+
+'base_path = "/home/engineermanny/Arduino_Project_Collection/"'
+Sets the base path to search for the .c file.
+
+'c_file_path = find_c_file(base_path, c_file_name)'
+Calls 'find_c_file' to search for the .c file.
+
+'if not c_file_path:'
+Checks if the .c file was not found.
+
+'print(f"No '{c_file_name}' file found in the Arduino_Project_Collection folder or its subdirectories.")'
+Prints a message if the file is not found.
+
+'exit(1)'
+Exits the script with a status of 1, indicating an error.
+
+'project_name = os.path.splitext(os.path.basename(c_file_path))[0]'
+Extracts the project name from the file, removing the extension.
+
+'os.chdir(os.path.dirname(c_file_path))'
+Changes the current working directory to the directory containing the .c file.
+
+'compile_command = f"avr-gcc -Os -DF_CPU=16000000UL -mmcu=atmega2560 -c -o {project_name}.o {project_name}.c"'
+Converts the .c file into a .o file (Object File).
+
+'create_elf_command = f"avr-gcc -mmcu=atmega2560 {project_name}.o -o {project_name}.elf"'
+Converts the .o file (Object File) into a .elf file (Executable and Linkable Format).
+
+'create_hex_command = f"avr-objcopy -O ihex -R .eeprom {project_name}.elf {project_name}.hex"'
+Converts the .elf file (Executable and Linkable Format) into a .hex file (Hexadecimal File).
+
+'upload_command = f"avrdude -V -patmega2560 -cwiring -P/dev/ttyACM0 -b115200 -D -Uflash:w:{project_name}.hex:i"'
+Constructs a command string to upload the compiled .hex file to an arduino.
+    
+'run_command(compile_command)'
+Calls the 'run_command' for the 'compile_command' 
+
+'run_command(create_elf_command)'
+Calls the 'run_command' for the 'create_elf_command'.
+
+'run_command(create_hex_command)'
+Calls the 'run_command' for the 'create_hex_command'.
+   
+'upload_command = f'sudo {upload_command}''
+Prefixes the 'upload_command' with 'sudo'.
+
+'print("Please enter your sudo password for uploading:")'
+Prints a prompt for the user to enter their sudo password.
+
+'run_command(upload_command)'
+Calls the 'run_command' for the 'upload_command'.
+
+'if __name__ == "__main__":'
+Checks if the script is being run as the main program and not being imported as a module into anothe script.
+
+'main()'
+Calls the 'main' function.
