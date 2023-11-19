@@ -23,3 +23,7 @@ Contains information about the Arduino Mega 2560 including pinout and block diag
 # **Arduino Mini Codes Folder**
 
 Contains short or quickly developed code to understand how the Arduino works.
+
+# **Code Explanation Folder** 
+
+Contains an explanation of each line of code for files in this repository.
