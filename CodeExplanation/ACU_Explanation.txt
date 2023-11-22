@@ -5,7 +5,7 @@ This is a shebang line that tells the system to execute this script with python3
 Imports the 'os' module which provides functions for interacting with the operating system.
 
 'import subprocess'
-Imports the 'subprocess' module, used to run new applications or programs through python.
+Imports the 'subprocess' module, used to run new applications or programs.
 
 'def run_command(command)'
 Defines a function named 'run_command' that takes a single argument, 'command'.
@@ -101,7 +101,7 @@ Prints a prompt for the user to enter their sudo password.
 Calls the 'run_command' for the 'upload_command'.
 
 'if __name__ == "__main__":'
-Checks if the script is being run as the main program and not being imported as a module into anothe script.
+Checks if the script is being run as the main program.
 
 'main()'
 Calls the 'main' function.
