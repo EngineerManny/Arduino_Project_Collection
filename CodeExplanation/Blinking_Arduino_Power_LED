@@ -1,0 +1,32 @@
+'#include <avr/io.h>'
+This is a header file that contains code and definitions for the Atmel AVR microcontrollers.
+
+'#include <util/delay.h>'
+This is a header file that uses the CPU's clock frequency to calculate loop counts for the specified delay time.
+
+'int main(void) {'
+Defines the main fucntion and does not accept any arguments as inputs.
+
+'DDRB |= (1 << DDB7);'
+Calls the data direction register bus b and changes the 7th bit which corresponds to PORTB to a 1 setting it as an output.
+
+'while(1) {'
+A while loop that continues to run as long as the coniditions are true and any non zero values are true so this loop goes on forever. 
+
+'PORTB |= (1 << PORTB7);'
+Sets the B7 bit in PORTB to a 1 setting the voltage to high and turning on the power led.
+
+'_delay_ms(1000);'
+A function that delays the code by 1 second.
+
+'PORTB &= ~(1 << PORTB7);'
+Sets the B7 bit in PORTB to a 0 setting the voltage to low and turning off the power led.
+
+'_delay_ms(1000);'
+A function that delays the code by 1 second.
+
+'}'
+Closes the while loop.
+
+'}'
+Closes the main function.
