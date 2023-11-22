@@ -5,7 +5,7 @@ This is a header file that contains code and definitions for the Atmel AVR micro
 This is a header file that uses the CPU's clock frequency to calculate loop counts for the specified delay time.
 
 'int main(void) {'
-Initilizes main fucntion and which is the entry point of the script.
+Initilizes the main fucntion and which is the entry point of the script.
 
 'DDRB |= (1 << DDB7);'
 Calls the data direction register b and changes the 7th bit which corresponds to PORTB to a 1 setting it as an output.
