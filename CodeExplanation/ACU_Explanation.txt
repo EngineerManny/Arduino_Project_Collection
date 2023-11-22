@@ -1,34 +1,36 @@
-'#!/usr/bin/env python3'
+'''python
+#!/usr/bin/env python3
+'''
 This is a shebang line that tells the system to execute this script with python3.
 
-'import os'
+'''import os'''
 Imports the 'os' module which provides functions for interacting with the operating system.
 
-'import subprocess'
+'''import subprocess'''
 Imports the 'subprocess' module, used to run new applications or programs.
 
-'def run_command(command)'
+'''def run_command(command)'''
 Defines a function named 'run_command' that takes a single argument, 'command'.
 
-'try'
+'''try'''
 Begins a try block where you attempt to run code that might cause an error.
 
-'subprocess.run(f'sudo {command}', shell=True, check=True)'
+'''subprocess.run(f'sudo {command}', shell=True, check=True)'''
 Runs a shell command with supervisor privileges ('sudo'). 'shell=True' allows shell commands to be passed as strings. 'check=True' raises an error if the command returns a non-zero exit status.
 
-'except subprocess.CalledProcessError as e:'
+'''except subprocess.CalledProcessError as e:'''
 Catches any 'CalledProcessError' thrown by the 'subprocess.run' command.
 
-'print(f"Error occurred: {e}")'
+'''print(f"Error occurred: {e}")'''
 Prints an error message if an exception occurs.
 
-'exit(1)'
+'''exit(1)'''
 Exits the script with status of 1, indicating an error.
 
-'def find_c_file(directory, file_name):'
+'''def find_c_file(directory, file_name):'''
 Defines a function to search for a .c file in a specified directory and its subdirectories.
 
-'for root, _, files in os.walk(directory):'
+'''for root, _, files in os.walk(directory):'''
 Iterates over the directory tree with 'root' as the current directory path, '_' for directories in the path (ignored), and 'files' as a list of files in 'root'.
 
 'for file in files:'
